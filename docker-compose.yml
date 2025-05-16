@@ -1,0 +1,19 @@
+services:
+  softwareai_observer_library_web:
+    build: .
+    privileged: true     # necessário para Docker-in-Docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    ports:
+      - "5014:5014"
+    command: > 
+      sh -c "python observer.py"
+    mem_limit: 500MB
+    cpus: "1.25"   
+    networks:
+      - rede_externa
+
+networks:
+  rede_externa:
+    external: true
