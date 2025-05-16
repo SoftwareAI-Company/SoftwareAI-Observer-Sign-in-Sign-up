@@ -6,7 +6,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
     ports:
-      - "5014:5014"
+      - "5024:5024"
     command: > 
       sh -c "python observer.py"
     mem_limit: 500MB
